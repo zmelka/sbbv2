@@ -11,7 +11,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-        use_sql_comments: truea
+        use_sql_comments: true
         dialect: org.hibernate.dialect.MariaDB103Dialect
 logging:
   level:
