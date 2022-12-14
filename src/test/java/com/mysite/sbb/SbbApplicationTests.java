@@ -5,14 +5,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class SbbApplicationTests {
 	@Autowired
 	private QuestionRepository questionRepository;
 
+
 	@Test
 	void testJpa(){
+		List<Question> all = questionRepository.findAll();
+		assertEquals(2, all.size());
+
+		Question q=all.get(1);
+		assertEquals("id는 자동으로 생성되나요?",q.getContent());
+	}
+	@Test
+	void testCreateQuestion(){
 		Question q1 = new Question();
 		q1.setSubject("sbb가 무엇인가요?");
 		q1.setContent("sbb에 대해서 알고 싶습니다.");
